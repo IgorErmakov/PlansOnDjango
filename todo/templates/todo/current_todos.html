@@ -1,0 +1,19 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+
+
+<h1>Todos list</h1>
+<a class="btn btn-primary mb-4" href="{% url 'create_todo' %}">+ Create</a>
+
+<div class="list-group">
+{% for itm in items %}
+  <a href="{% url 'view_item' itm.id %}" class="list-group-item list-group-item-action {% if itm.is_important %}active{% endif %}">
+    #{{ itm.id }} - {{ itm.name }}
+    {% if itm.memo %}
+    <div><small>{{ itm.memo | truncatechars:100}}</small></div>
+    {% endif %}
+  </a>
+{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+
+
+<h1>COMPLETED</h1>
+<a class="btn btn-primary mb-5" href="{% url 'create_todo' %}">+ Create</a>
+
+<div class="list-group">
+{% for itm in items %}
+  <a href="{% url 'view_item' itm.id %}" class="list-group-item list-group-item-action {% if itm.is_important %}active{% endif %}">
+    #{{ itm.id }} - {{ itm.name }}
+    {% if itm.memo %}
+    <div><small>{{ itm.memo | truncatechars:100}}</small></div>
+    <date>{{ itm.date_completed | date:"d M Y" }}</date>
+    {% endif %}
+  </a>
+{% endfor %}
+</div>
+
+{% endblock %}

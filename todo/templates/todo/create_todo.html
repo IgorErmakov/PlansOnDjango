@@ -1,0 +1,18 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+
+
+<h1>Create a new entry</h1>
+
+<h3>{{ error }}</h3>
+
+<form method="POST">
+
+  {{ form.as_p }}
+  {% csrf_token %}
+
+  <button type="submit" class="btn btn-primary">Create</button>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+<style>
+  form input, form textarea {
+    display: block
+  }
+</style>
+
+<h1>Log In</h1>
+
+<h3>{{ error }}</h3>
+
+<form method="POST">
+
+  {{ form.as_p }}
+  {% csrf_token %}
+
+  <button type="submit" class="btn btn-primary">Log In</button>
+
+</form>
+
+{% endblock %}

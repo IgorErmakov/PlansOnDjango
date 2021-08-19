@@ -1,0 +1,50 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+<style>
+  form input, form textarea {
+    display: block
+  }
+</style>
+
+<h1>View</h1>
+
+<!--
+{% if itm.is_important %}
+<h2>! IMPORTANT !</h2>
+{% endif %}
+
+<h5>ID: #{{ itm.id }}</h5>
+<h5>NAME: {{ itm.name }}</h5>
+{% if itm.memo %}
+<p><small>{{ itm.memo}}</small></p>
+{% endif %}
+
+-->
+<form method="POST">
+
+  {{ form.as_p }}
+  {% csrf_token %}
+
+  <button type="submit" class="btn btn-primary">Update</button>
+
+
+</form>
+<br/>
+
+<form method="POST" action={% url 'complete_item' itm.id %}>
+  {% csrf_token %}
+  <button type="submit" class="btn btn-success">Complete item</button>
+</form>
+
+<br/>
+
+
+
+<form method="POST" action={% url 'delete_item' itm.id %}>
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">DELETE</button>
+</form>
+
+
+
+{% endblock %}
